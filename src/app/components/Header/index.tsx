@@ -1,30 +1,25 @@
 import * as React from 'react';
-import { TodoTextInput } from '../TodoTextInput';
-import { TodoActions } from 'app/actions/todos';
+import { COLORS } from '../../../main';
 
 export namespace Header {
-  export interface Props {
-    addTodo: typeof TodoActions.addTodo;
-  }
+  export interface Props {}
 }
 
+const style = {
+  header: {
+    lineHeight: 1,
+    fontSize: '50px',
+    fontColor: COLORS.veryDark
+  }
+};
 export class Header extends React.Component<Header.Props> {
   constructor(props: Header.Props, context?: any) {
     super(props, context);
-    this.handleSave = this.handleSave.bind(this);
   }
-
-  handleSave(text: string) {
-    if (text.length) {
-      this.props.addTodo({ text });
-    }
-  }
-
   render() {
     return (
       <header>
-        <h1>Todos</h1>
-        <TodoTextInput newTodo onSave={this.handleSave} placeholder="What needs to be done?" />
+        <h1 style={style.header}>BBC Forum Article Writter</h1>
       </header>
     );
   }

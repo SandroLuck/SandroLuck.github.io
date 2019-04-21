@@ -10,6 +10,20 @@ import { App } from './app';
 const history = createBrowserHistory();
 const store = configureStore();
 
+//colors from light to dark, blueish
+//#DDE3FD
+//#798EF6
+//#193DF0
+//#0A2299
+//#091034
+export const COLORS = {
+  veryLight: '#DDE3FD',
+  light: '#DDE3FD',
+  normal: '#193DF0',
+  dark: '#0A2299',
+  veryDark: '#091034'
+};
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
