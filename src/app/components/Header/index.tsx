@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { COLORS } from '../../../main';
 
 export namespace Header {
   export interface Props {}
@@ -7,9 +6,8 @@ export namespace Header {
 
 const style = {
   header: {
-    lineHeight: 1,
     fontSize: '50px',
-    fontColor: COLORS.veryDark
+    fontFamily: 'Arial'
   }
 };
 export class Header extends React.Component<Header.Props> {
@@ -19,7 +17,7 @@ export class Header extends React.Component<Header.Props> {
   render() {
     return (
       <header>
-        <h1 style={style.header}>BBC Forum Article Writter</h1>
+        <h1 style={style.header}>Article Writter</h1>
       </header>
     );
   }

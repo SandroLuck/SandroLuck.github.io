@@ -48,36 +48,7 @@ module.exports = {
       // css
       {
         test: /\.css$/,
-        use: [
-          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-          {
-            loader: 'css-loader',
-            query: {
-              modules: true,
-              sourceMap: !isProduction,
-              importLoaders: 1,
-              localIdentName: isProduction ? '[hash:base64:5]' : '[local]__[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: [
-                require('postcss-import')({ addDependencyTo: webpack }),
-                require('postcss-url')(),
-                require('postcss-preset-env')({
-                  /* use stage 2 features (defaults) */
-                  stage: 2
-                }),
-                require('postcss-reporter')(),
-                require('postcss-browser-reporter')({
-                  disabled: isProduction
-                })
-              ]
-            }
-          }
-        ]
+        use: ['style-loader', 'css-loader']
       },
       // static assets
       { test: /\.html$/, use: 'html-loader' },
@@ -85,6 +56,26 @@ module.exports = {
       {
         test: /\.(jpe?g|gif|bmp|mp3|mp4|ogg|wav|eot|ttf|woff|woff2)$/,
         use: 'file-loader'
+      },
+      {
+        test: /\.(woff|woff2)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            name: 'fonts/[hash].[ext]',
+            limit: 5000,
+            mimetype: 'application/font-woff'
+          }
+        }
+      },
+      {
+        test: /\.(ttf|eot|svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[hash].[ext]'
+          }
+        }
       }
     ]
   },
